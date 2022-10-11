@@ -124,7 +124,7 @@ function edit (id: number) {
   isEdit.value = true;
 
   editedTodo.value = todos.value.find((todo) => todo.id === id) || null;
-  todoInput.value = editedTodo.value.content || '';
+  todoInput.value = editedTodo.value?.content || '';
 }
 
 function deleteTodo (id: number) {
