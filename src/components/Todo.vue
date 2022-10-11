@@ -5,7 +5,7 @@
     <input
       type="checkbox"
       :checked="props.todo.isDone"
-      @change="check(props.todo.id)"
+      @change="check"
     >
     <div
       class="w-[50%] text-lg"
@@ -14,14 +14,14 @@
 
     <button
       class="py-[10px] rounded-md"
-      @click="edit(props.todo.id)"
+      @click="edit"
     >
       <PencilSquareIcon class="h-5 w-5 text-stone-400" />
     </button>
 
     <button
       class="py-[10px] rounded-md"
-      @click="deleteTodo(props.todo.id)"
+      @click="deleteTodo"
     >
       <TrashIcon class="h-5 w-5 text-stone-400" />
     </button>
@@ -38,21 +38,21 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const emit = defineEmits<{(e: 'edit', id: number): void
-  (e: 'delete', id: number): void
-  (e: 'check', id: number): void
+const emit = defineEmits<{(e: 'edit'): void
+  (e: 'delete'): void
+  (e: 'check'): void
 }>();
 
-function edit (id: number) {
-  emit('edit', id);
+function edit () {
+  emit('edit');
 }
 
-function deleteTodo (id: number) {
-  emit('delete', id);
+function deleteTodo () {
+  emit('delete');
 }
 
-function check (id: number) {
-  emit('check', id);
+function check () {
+  emit('check');
 }
 
 </script>

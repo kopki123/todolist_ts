@@ -35,9 +35,9 @@
         v-for="todo of showTodos"
         :key="todo.id"
         :todo="todo"
-        @edit="edit"
-        @delete="deleteTodo"
-        @check="check"
+        @edit="edit(todo.id)"
+        @delete="deleteTodo(todo.id)"
+        @check="check(todo.id)"
       />
     </div>
   </div>
@@ -124,7 +124,7 @@ function edit (id: number) {
   isEdit.value = true;
 
   editedTodo.value = todos.value.find((todo) => todo.id === id) || null;
-  todoInput.value = editedTodo.value?.content || '';
+  todoInput.value = editedTodo.value.content || '';
 }
 
 function deleteTodo (id: number) {
