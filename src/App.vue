@@ -128,6 +128,12 @@ function edit (id: number) {
 }
 
 function deleteTodo (id: number) {
+  if (editedTodo.value && editedTodo.value?.id) {
+    isEdit.value = false;
+    editedTodo.value = null;
+    todoInput.value = '';
+  }
+
   todos.value = todos.value.filter((todo) => todo.id !== id);
 }
 
